@@ -17,84 +17,84 @@ int compile_ree_automatically (ree_stream *stream, ree_builder *builder){
       int status = compile_ree_beginning(stream, builder);
       if (status)
         return status;
-			break;
+      break;
     }
     
     case '$': {
       int status = compile_ree_end(stream, builder);
       if (status)
         return status;
-			break;
+      break;
     }
     
     case '.': {
       int status = compile_ree_any(stream, builder);
       if (status)
         return status;
-			break;
+      break;
     }
     
     case '*': {
       int status = compile_ree_repeat_unnecessary(stream, builder);
       if (status)
         return status;
-			break;
+      break;
     }
     
     case '+': {
       int status = compile_ree_repeat_necessary(stream, builder);
       if (status)
         return status;
-			break;
+      break;
     }
     
     case '?': {
       int status = compile_ree_unnecessary(stream, builder);
       if (status)
         return status;
-			break;
+      break;
     }
     
     case '<': {
       int status = compile_ree_bytearray(stream, builder);
       if (status)
         return status;
-			break;
+      break;
     }
     
     case '{': {
       int status = compile_ree_repeat_for(stream, builder);
       if (status)
         return status;
-			break;
+      break;
     }
     
     case '[': {
       int status = compile_ree_set(stream, builder);
       if (status)
         return status;
-			break;
+      break;
     }
     
     case '(': {
       int status = compile_ree_group(stream, builder);
       if (status)
         return status;
-			break;
+      break;
     }
     
     case '|': {
       int status = compile_ree_or(stream, builder);
       if (status)
         return status;
-			break;
+      break;
     }
     
     default: {
       int status = compile_ree_byte(stream, builder);
       if (status)
         return status;
-			break;
+      break;
     }
     
   }

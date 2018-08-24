@@ -1,147 +1,147 @@
 #include <ree.h>
-	
+  
 static int __min (ree_stream *stream, ree_node *node, ree *ree, bool *found){
 
-	bool fnd;
-	int status1 = match_ree_node(stream, node->repeat_necessary_node.repeat_node, ree, &fnd);
-	if (status1)
-		return 1;
-	
-	if (fnd == false){
-		*found = false;
-		return 0;
-	}
+  bool fnd;
+  int status1 = match_ree_node(stream, node->repeat_necessary_node.repeat_node, ree, &fnd);
+  if (status1)
+    return 1;
+  
+  if (fnd == false){
+    *found = false;
+    return 0;
+  }
 
-	ree_stream sm = *stream;
-	
-	bool fnd2;
-	int status2 = match_ree_node(stream, node->next, ree, &fnd2);
-	if (status2)
-		return 1;
-	
-	if (fnd2 == true){
-		*found = true;
-		return 0;
-	}
-	
-	*stream = sm;
+  ree_stream sm = *stream;
+  
+  bool fnd2;
+  int status2 = match_ree_node(stream, node->next, ree, &fnd2);
+  if (status2)
+    return 1;
+  
+  if (fnd2 == true){
+    *found = true;
+    return 0;
+  }
+  
+  *stream = sm;
 
-	while (!ree_stream_eof(stream)){
-		
-		ree_stream sm = *stream;
-		
-		bool fnd;
-		int status1 = match_ree_node(stream, node->repeat_necessary_node.repeat_node, ree, &fnd);
-		if (status1)
-			return 1;
-		
-		if (fnd == true){
-			
-			ree_stream sm2 = *stream;
-			
-			bool fnd;
-			int status1 = match_ree_node(stream, node->next, ree, &fnd);
-			if (status1)
-				return 1;
-			
-			if (fnd == true){
-				*found = true;
-				return 0;
-			}
-			
-			*stream = sm2;
-			
-		}
-		
-		else {
-			*found = false;
-			return 0;
-		}
-		
-	}
-	
-	return match_ree_node(stream, node->next, ree, found);
-	
+  while (!ree_stream_eof(stream)){
+    
+    ree_stream sm = *stream;
+    
+    bool fnd;
+    int status1 = match_ree_node(stream, node->repeat_necessary_node.repeat_node, ree, &fnd);
+    if (status1)
+      return 1;
+    
+    if (fnd == true){
+      
+      ree_stream sm2 = *stream;
+      
+      bool fnd;
+      int status1 = match_ree_node(stream, node->next, ree, &fnd);
+      if (status1)
+        return 1;
+      
+      if (fnd == true){
+        *found = true;
+        return 0;
+      }
+      
+      *stream = sm2;
+      
+    }
+    
+    else {
+      *found = false;
+      return 0;
+    }
+    
+  }
+  
+  return match_ree_node(stream, node->next, ree, found);
+  
 }
 
 static int __max (ree_stream *stream, ree_node *node, ree *ree, bool *found){
-	
-	bool fnd;
-	int status1 = match_ree_node(stream, node->repeat_necessary_node.repeat_node, ree, &fnd);
-	if (status1)
-		return 1;
-	
-	if (fnd == false){
-		*found = false;
-		return 0;
-	}
+  
+  bool fnd;
+  int status1 = match_ree_node(stream, node->repeat_necessary_node.repeat_node, ree, &fnd);
+  if (status1)
+    return 1;
+  
+  if (fnd == false){
+    *found = false;
+    return 0;
+  }
 
-	bool success = false;
-	ree_stream successsm;
-	
-	ree_stream sm = *stream;
-	
-	bool fnd2;
-	int status2 = match_ree_node(stream, node->next, ree, &fnd2);
-	if (status2)
-		return 1;
-	
-	if (fnd2 == true){
-		success = true;
-		successsm = *stream;
-	}
-	
-	*stream = sm;
-	
-	while (!ree_stream_eof(stream)){
-		
-		bool fnd;
-		int status1 = match_ree_node(stream, node->repeat_unnecessary_node.repeat_node, ree, &fnd);
-		if (status1)
-			return 1;
-		
-		if (fnd == true){
-			
-			ree_stream sm2 = *stream;
-			
-			bool fnd;
-			int status1 = match_ree_node(stream, node->next, ree, &fnd);
-			if (status1)
-				return 1;
-			
-			if (fnd == true){
-				success = true;
-				successsm = *stream;
-			}
-			
-			*stream = sm2;
-			
-		}
-		
-		else {
-			
-			if (success == true){
-				*stream = successsm;
-			}
+  bool success = false;
+  ree_stream successsm;
+  
+  ree_stream sm = *stream;
+  
+  bool fnd2;
+  int status2 = match_ree_node(stream, node->next, ree, &fnd2);
+  if (status2)
+    return 1;
+  
+  if (fnd2 == true){
+    success = true;
+    successsm = *stream;
+  }
+  
+  *stream = sm;
+  
+  while (!ree_stream_eof(stream)){
+    
+    bool fnd;
+    int status1 = match_ree_node(stream, node->repeat_unnecessary_node.repeat_node, ree, &fnd);
+    if (status1)
+      return 1;
+    
+    if (fnd == true){
+      
+      ree_stream sm2 = *stream;
+      
+      bool fnd;
+      int status1 = match_ree_node(stream, node->next, ree, &fnd);
+      if (status1)
+        return 1;
+      
+      if (fnd == true){
+        success = true;
+        successsm = *stream;
+      }
+      
+      *stream = sm2;
+      
+    }
+    
+    else {
+      
+      if (success == true){
+        *stream = successsm;
+      }
 
-			*found = success;
-			return 0;
-			
-		}
-		
-	}
-	
-	if (success == true){
-		*stream = successsm;
-	}
+      *found = success;
+      return 0;
+      
+    }
+    
+  }
+  
+  if (success == true){
+    *stream = successsm;
+  }
 
-	*found = success;
-	return 0;
-	
+  *found = success;
+  return 0;
+  
 }
 
 int match_ree_repeat_necessary_node (ree_stream *stream, ree_node *node, ree *ree, bool *found){
-	if (node->repeat_necessary_node.minimum == true)
-		return __min(stream, node, ree, found);
-	return __max(stream, node, ree, found);
+  if (node->repeat_necessary_node.minimum == true)
+    return __min(stream, node, ree, found);
+  return __max(stream, node, ree, found);
 }

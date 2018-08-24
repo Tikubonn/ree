@@ -1,12 +1,12 @@
 #include <ree.h>
 
 int fix_ree_repeat_unnecessary_node (ree_node *node, ree_node_pool *to, ree_node_pool *from){
-	
-	node->repeat_unnecessary_node.repeat_node = 
-		(void*)(node->repeat_unnecessary_node.repeat_node) + 
-		((intptr_t)(to->sequence) - 
-		 (intptr_t)(from->sequence));
-	
-	return 0;
+  
+  node->repeat_unnecessary_node.repeat_node = 
+    (void*)(node->repeat_unnecessary_node.repeat_node) + 
+    ((intptr_t)(to->sequence) - 
+     (intptr_t)(from->sequence));
+  
+  return 0;
 
 }

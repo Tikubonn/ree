@@ -19,9 +19,9 @@ int compile_ree_byte (ree_stream *stream, ree_builder *builder){
     return status1;
   
   ree_node *node = allocate_node_from_ree_node_pool(builder->ree->pool);
-	if (node == NULL)
-		return REE_NOT_ENOUGH_MEMORY;
-	
+  if (node == NULL)
+    return REE_NOT_ENOUGH_MEMORY;
+  
   node->type = REE_BYTE_NODE;
   node->byte_node.index = index;
 

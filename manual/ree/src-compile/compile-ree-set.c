@@ -53,11 +53,11 @@ int compile_ree_set (ree_stream *stream, ree_builder *builder){
       return REE_SYNTAX_ERROR;
     
     else if (character == ']'){
-			int status = seek_ree_stream(1, stream);
-			if (status)
-				return 1;
-			break;
-		}
+      int status = seek_ree_stream(1, stream);
+      if (status)
+        return 1;
+      break;
+    }
     
     else if (character == '-'){
       int status = compile_ree_range(stream, builder);

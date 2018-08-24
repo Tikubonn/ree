@@ -2,5 +2,5 @@
 #include <stdlib.h>
 
 ree *allocate_ree (){
-	return malloc(sizeof(ree));
+  return malloc(sizeof(ree));
 }

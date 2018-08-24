@@ -18,9 +18,9 @@ static int __number (ree_stream *stream, ree_size *number){
         return 1;
       num *= 10;
       num += character - '0';
-			int status1 = seek_ree_stream(1, stream);
-			if (status1)
-				return 1;
+      int status1 = seek_ree_stream(1, stream);
+      if (status1)
+        return 1;
     }
     else {
       break;
@@ -64,11 +64,11 @@ int compile_ree_repeat_for (ree_stream *stream, ree_builder *builder){
     repeat_max = repeat_min;
   }
   
-	ree_node *nd;
-	int status10 = pop_ree_builder_node(builder, &nd);
-	if (status10)
-		return 1;
-	
+  ree_node *nd;
+  int status10 = pop_ree_builder_node(builder, &nd);
+  if (status10)
+    return 1;
+  
   ree_node *node = allocate_node_from_ree_node_pool(builder->ree->pool);
   if (node == NULL)
     return 1;
@@ -76,7 +76,7 @@ int compile_ree_repeat_for (ree_stream *stream, ree_builder *builder){
   node->type = REE_REPEAT_FOR_NODE;
   node->repeat_for_node.repeat_min = repeat_min;
   node->repeat_for_node.repeat_max = repeat_max;
-	node->repeat_for_node.repeat_node = nd;
+  node->repeat_for_node.repeat_node = nd;
   
   int status11 = connect_to_ree_builder_node(node, builder);
   if (status11)

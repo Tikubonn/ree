@@ -28,40 +28,40 @@ free_ree_string(source2);\
 }
 
 int main (){
-	
-	test1("mo..!", "moco!", true);
-	test1("mo..!", "mooo!", true);
-	
-	test1("mo.*!", "mo!", true);
-	test1("mo.*!", "moo!", true);
-	test1("mo.*!", "moco!", true);
-	test1("mo.*!", "monaco!", true);
-		
-	test1("mo.*?!", "mo!", true);
-	test1("mo.*?!", "moo!", true);
-	test1("mo.*?!", "moco!", true);
-	test1("mo.*?!", "monaco!", true);
-		
-	test1("mo.+!", "mo!", false);
-	test1("mo.+!", "moo!", true);
-	test1("mo.+!", "moco!", true);
-	test1("mo.+!", "monaco!", true);
-		
-	test1("mo.+?!", "mo!", false);
-	test1("mo.+?!", "moo!", true);
-	test1("mo.+?!", "moco!", true);
-	test1("mo.+?!", "monaco!", true);
+  
+  test1("mo..!", "moco!", true);
+  test1("mo..!", "mooo!", true);
+  
+  test1("mo.*!", "mo!", true);
+  test1("mo.*!", "moo!", true);
+  test1("mo.*!", "moco!", true);
+  test1("mo.*!", "monaco!", true);
+    
+  test1("mo.*?!", "mo!", true);
+  test1("mo.*?!", "moo!", true);
+  test1("mo.*?!", "moco!", true);
+  test1("mo.*?!", "monaco!", true);
+    
+  test1("mo.+!", "mo!", false);
+  test1("mo.+!", "moo!", true);
+  test1("mo.+!", "moco!", true);
+  test1("mo.+!", "monaco!", true);
+    
+  test1("mo.+?!", "mo!", false);
+  test1("mo.+?!", "moo!", true);
+  test1("mo.+?!", "moco!", true);
+  test1("mo.+?!", "monaco!", true);
 
-	test1("mo.{1,2}!", "mo!", false);
-	test1("mo.{1,2}!", "moo!", true);
-	test1("mo.{1,2}!", "moco!", true);
-	test1("mo.{1,2}!", "monaco!", false);
-	
-	test1("mo.{2}!", "mo!", false);
-	test1("mo.{2}!", "moo!", false);
-	test1("mo.{2}!", "moco!", true);
-	test1("mo.{2}!", "monaco!", false);
-	
-	return 0;
-	
+  test1("mo.{1,2}!", "mo!", false);
+  test1("mo.{1,2}!", "moo!", true);
+  test1("mo.{1,2}!", "moco!", true);
+  test1("mo.{1,2}!", "monaco!", false);
+  
+  test1("mo.{2}!", "mo!", false);
+  test1("mo.{2}!", "moo!", false);
+  test1("mo.{2}!", "moco!", true);
+  test1("mo.{2}!", "monaco!", false);
+  
+  return 0;
+  
 }

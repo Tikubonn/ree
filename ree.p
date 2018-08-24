@@ -43,8 +43,8 @@ typedef struct {
 } ree_or_node;
 
 typedef struct {
-	struct ree_node *range_node1;
-	struct ree_node *range_node2;
+  struct ree_node *range_node1;
+  struct ree_node *range_node2;
 } ree_range_node;
 
 typedef struct {
@@ -56,8 +56,8 @@ typedef struct {
   struct ree_node *next_group_node;
   ree_size match_beginning;
   ree_size match_end;
-	ree_size match_temp_beginning;
-	ree_size match_temp_end;
+  ree_size match_temp_beginning;
+  ree_size match_temp_end;
 } ree_group_node;
 
 typedef struct {
@@ -88,7 +88,7 @@ typedef struct ree_node {
     ree_repeat_necessary_node repeat_necessary_node;
     ree_repeat_unnecessary_node repeat_unnecessary_node;
     ree_or_node or_node;
-		ree_range_node range_node;
+    ree_range_node range_node;
     ree_set_node set_node;
     ree_group_node group_node;
     ree_unnecessary_node unnecessary_node;
@@ -121,8 +121,8 @@ typedef struct {
   ree_node_pool *pool;
   ree_node *root;
   ree_node *group_root;
-	// ree_size match_beginning;
-	// ree_size match_end;
+  // ree_size match_beginning;
+  // ree_size match_end;
 } ree;
 
 typedef struct {
@@ -134,6 +134,6 @@ typedef struct {
 } ree_builder;
 
 typedef struct {
-	ree_size beginning;
-	ree_size end;
+  ree_size beginning;
+  ree_size end;
 } ree_region;
