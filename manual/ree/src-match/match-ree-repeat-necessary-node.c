@@ -12,6 +12,20 @@ static int __min (ree_stream *stream, ree_node *node, ree *ree, bool *found){
 		return 0;
 	}
 
+	ree_stream sm = *stream;
+	
+	bool fnd2;
+	int status2 = match_ree_node(stream, node->next, ree, &fnd2);
+	if (status2)
+		return 1;
+	
+	if (fnd2 == true){
+		*found = true;
+		return 0;
+	}
+	
+	*stream = sm;
+
 	while (!ree_stream_eof(stream)){
 		
 		ree_stream sm = *stream;
@@ -64,6 +78,20 @@ static int __max (ree_stream *stream, ree_node *node, ree *ree, bool *found){
 
 	bool success = false;
 	ree_stream successsm;
+	
+	ree_stream sm = *stream;
+	
+	bool fnd2;
+	int status2 = match_ree_node(stream, node->next, ree, &fnd2);
+	if (status2)
+		return 1;
+	
+	if (fnd2 == true){
+		success = true;
+		successsm = *stream;
+	}
+	
+	*stream = sm;
 	
 	while (!ree_stream_eof(stream)){
 		

@@ -2,6 +2,20 @@
 #include <stdio.h>
 
 static int __min (ree_stream *stream, ree_node *node, ree *ree, bool *found){
+
+	ree_stream sm = *stream;
+	
+	bool fnd;
+	int status1 = match_ree_node(stream, node->next, ree, &fnd);
+	if (status1)
+		return 1;
+	
+	if (fnd == true){
+		*found = true;
+		return 0;
+	}
+	
+	*stream = sm;
 	
 	while (!ree_stream_eof(stream)){
 		
@@ -45,6 +59,20 @@ static int __max (ree_stream *stream, ree_node *node, ree *ree, bool *found){
 
 	bool success = false;
 	ree_stream successsm;
+	
+	ree_stream sm = *stream;
+	
+	bool fnd;
+	int status1 = match_ree_node(stream, node->next, ree, &fnd);
+	if (status1)
+		return 1;
+	
+	if (fnd == true){
+		success = true;
+		successsm = *stream;
+	}
+	
+	*stream = sm;
 	
 	while (!ree_stream_eof(stream)){
 		
@@ -90,7 +118,7 @@ static int __max (ree_stream *stream, ree_node *node, ree *ree, bool *found){
 
 	*found = success;
 	return 0;
-		
+	
 }
 
 int match_ree_repeat_unnecessary_node (ree_stream *stream, ree_node *node, ree *ree, bool *found){

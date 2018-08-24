@@ -8,6 +8,7 @@ all:
 	make -C auto
 	make dist/ree.lib
 	make dist/ree.dll
+	make test.exe
 	
 clean:
 	make clean -C manual
@@ -28,3 +29,6 @@ dist/ree.dll: manual/manual.lib auto/auto.lib
 	ar x $(ROOTDIR)/manual/manual.lib && \
 	ar x $(ROOTDIR)/auto/auto.lib && \
 	$(CC) $(CFLAGS) -shared -o $(ROOTDIR)/dist/ree.dll *.o
+
+test.exe: test.c dist/ree.lib
+	$(CC) $(CFLAGS) test.c dist/ree.lib -o test.exe
