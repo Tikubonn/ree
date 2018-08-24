@@ -115,6 +115,12 @@ int main (){
   test2("mo.+?!", "moco!moco!", 0, 5);
   test2("mo.+?!", "monaco!monaco!", 0, 7);
   
+  test2("mo.{2}!", "moco!", 0, 5);
+  test2("mo.{2}!", "moco!moco!", 0, 5);
+  
+  test2("mo.{2,128}!", "moco!", 0, 5);
+  test2("mo.{2,128}!", "moco!moco!", 0, 10);
+  
   return 0;
   
 }
