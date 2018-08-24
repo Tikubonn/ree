@@ -14,10 +14,12 @@ bool found;\
 ree_string *source2 = make_ree_string0(text);\
 int status2 = match_ree(source2, ree, &found);\
 if (status2){\
+dump_ree(stderr, ree);\
 fprintf(stderr, "line of %lu: match_ree() caused error! (%d)\n", __LINE__, status1);\
 abort();\
 }\
 if (found != fnd){\
+dump_ree(stderr, ree);\
 fprintf(stderr, "failed: \"%s\" <= \"%s\" matching result is not %s.\n", regexp, text, fnd ? "true" : "false");\
 abort();\
 }\
@@ -43,16 +45,19 @@ fprintf(stderr, "line of %lu: match_ree() caused error! (%d)\n", __LINE__, statu
 abort();\
 }\
 if (found == false){\
+dump_ree(stderr, ree);\
 fprintf(stderr, "failed: \"%s\" <= \"%s\" unmatched.\n", regexp, text);\
 abort();\
 }\
 ree_region region;\
 get_ree_match(ree, &region);\
 if (region.beginning != beg){\
+dump_ree(stderr, ree);\
 fprintf(stderr, "failed: \"%s\" <= \"%s\" (%d != %d) matched beginning position was unequal.", regexp, text, beg);\
 abort();\
 }\
 if (region.end != ed){\
+dump_ree(stderr, ree);\
 fprintf(stderr, "failed: \"%s\" <= \"%s\" (%d != %d) matched end position was unequal.", regexp, text, ed);\
 abort();\
 }\
@@ -120,6 +125,20 @@ int main (){
   
   test2("mo.{2,128}!", "moco!", 0, 5);
   test2("mo.{2,128}!", "moco!moco!", 0, 10);
+  
+  test1("mo[o]+!", "moo!", true);
+  test1("mo[ca]+!", "moca!", true);
+  test1("mo[nac]+!", "monaca!", true);
+  
+  test1("mo[a-z]+!", "moo!", true);
+  test1("mo[a-z]+!", "moca!", true);
+  test1("mo[a-z]+!", "monaca!", true);
+
+	test1("mo[o]!", "moo!", true);
+	test1("mo[o]!", "moa!", false);
+	
+	test1("mo[a-z]!", "moo!", true);
+	test1("mo[a-z]!", "mo0!", false);
   
   return 0;
   

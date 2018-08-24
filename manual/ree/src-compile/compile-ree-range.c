@@ -1,9 +1,10 @@
 #include <ree.h>
+#include <stdio.h>
 
 int compile_ree_range (ree_stream *stream, ree_builder *builder){
-  
+  	
   int character = get_ree_stream(stream);
-  if (character == '-')
+  if (character != '-')
     return REE_SYNTAX_ERROR;
   
   int status1 = compile_ree_automatically(stream, builder);
@@ -37,8 +38,8 @@ int compile_ree_range (ree_stream *stream, ree_builder *builder){
     return REE_NOT_ENOUGH_MEMORY;
   
   node->type = REE_RANGE_NODE;
-  node->range_node.range_node1 = nodea;
-  node->range_node.range_node2 = nodeb;
+  node->range_node.range_node1 = nodeb;
+  node->range_node.range_node2 = nodea;
   
   int status10 = connect_to_ree_builder_node(node, builder);
   if (status10)

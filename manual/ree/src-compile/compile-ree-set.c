@@ -3,8 +3,8 @@
 int compile_ree_set (ree_stream *stream, ree_builder *builder){
   
   int character1 = get_ree_stream(stream);
-  if (character1 == '[')
-    return 1;
+  if (character1 != '[')
+    return REE_SYNTAX_ERROR;
   
   ree_node *node = allocate_node_from_ree_node_pool(builder->ree->pool);
   if (node == NULL)
@@ -29,7 +29,7 @@ int compile_ree_set (ree_stream *stream, ree_builder *builder){
   if (character3 == '-'){
     int status1 = compile_ree_byte(stream, builder);
     if (status1)
-      return 1;
+      return status1;
   }
   
   while (1){
@@ -47,7 +47,6 @@ int compile_ree_set (ree_stream *stream, ree_builder *builder){
         character == '{' || 
         character == '}' || 
         character == '[' || 
-        character == ']' || 
         character == '(' || 
         character == ')')
       return REE_SYNTAX_ERROR;
@@ -65,8 +64,14 @@ int compile_ree_set (ree_stream *stream, ree_builder *builder){
         return status;
     }
     
+    else if (character == '<'){
+      int status = compile_ree_bytearray(stream, builder);
+      if (status)
+        return status;
+    }
+    
     else {
-      int status = compile_ree_automatically(stream, builder);
+      int status = compile_ree_byte(stream, builder);
       if (status)
         return status;
     }

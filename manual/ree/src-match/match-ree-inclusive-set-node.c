@@ -13,6 +13,8 @@ static int __match (ree_stream *stream, ree_node *node, ree *ree, bool *found){
   }
 }
 
+#include <stdio.h>
+
 int match_ree_inclusive_set_node (ree_stream *stream, ree_node *node, ree *ree, bool *found){
   
   ree_stream sm = *stream;

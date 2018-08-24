@@ -1,5 +1,8 @@
 #include <ree.h>
 
+#define min(a,b) ((a)<(b)?(a):(b))
+#define max(a,b) ((a)<(b)?(b):(a))
+
 static int __byte (ree_stream *stream, ree_node *nodea, ree_node *nodeb, ree *ree, bool *found){
   
   char charactera;
@@ -13,12 +16,12 @@ static int __byte (ree_stream *stream, ree_node *nodea, ree_node *nodeb, ree *re
   
   char character = get_ree_stream(stream);
   if (character == REE_STREAM_EOF){
-    *found = 0;
+    *found = false;
     return 0;
   }
-  
-  if (charactera <= character && 
-       character <= characterb){
+
+  if (min(charactera, characterb) <= character && 
+      character <= max(charactera, characterb)){
     *found = true;
     return 0;
   }
