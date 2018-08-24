@@ -24,6 +24,6 @@ int dump_ree_bytearray_node_without_next (FILE *stream, ree_node *node, ree *ree
   
   fprintf(stream, "\"\n");
   
-	return dump_ree_node(stream, node->next, ree, indentation);
+	return 0;
 
 }
