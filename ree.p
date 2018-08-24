@@ -121,8 +121,8 @@ typedef struct {
   ree_node_pool *pool;
   ree_node *root;
   ree_node *group_root;
-  // ree_size match_beginning;
-  // ree_size match_end;
+  ree_size match_beginning;
+  ree_size match_end;
 } ree;
 
 typedef struct {

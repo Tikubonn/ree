@@ -8,7 +8,8 @@ int __stdcall search_ree (ree_string *source, ree *ree, bool *found){
   while (!ree_stream_eof(&stream)){
     
     ree_stream sm = stream;
-    
+		ree_size beginning = ree_stream_index(&stream);
+		
     bool fnd;
     int status1 = match_ree_node(&stream, ree->root, ree, &fnd);
     if (status1)
@@ -16,6 +17,9 @@ int __stdcall search_ree (ree_string *source, ree *ree, bool *found){
     
     if (fnd){
       *found = true;
+			ree_size end = ree_stream_index(&stream);
+			ree->match_beginning = beginning;
+			ree->match_end = end;
       return 0;
     }
     
