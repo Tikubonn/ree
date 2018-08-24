@@ -1,5 +1,4 @@
 #include <ree.h>
-#include <stdio.h>
 
 static int __min (ree_stream *stream, ree_node *node, ree *ree, bool *found){
 
