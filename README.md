@@ -13,7 +13,7 @@ bool found;
 match_ree(text, ree, &found);
 
 ree_region region;
-get_ree_matched(ree, &region); // hello ~ bonn!
+get_ree_match(ree, &region); // hello ~ bonn!
 
 ree_region region2;
 get_ree_group(0, ree, &region2); // tikubonn
