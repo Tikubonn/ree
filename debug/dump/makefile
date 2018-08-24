@@ -15,16 +15,18 @@ clean:
 	rm -f compiled/dump-ree-repeat-for-node.o
 	rm -f compiled/dump-ree-repeat-necessary-node.o
 	rm -f compiled/dump-ree-repeat-unnecessary-node.o
-	rm -f compiled/dump-ree-range-node.o
+	rm -f compiled/dump-ree-range-node-without-next.o
 	rm -f compiled/dump-ree-inclusive-set-node.o
 	rm -f compiled/dump-ree-declusive-set-node.o
 	rm -f compiled/dump-ree-group-node.o
 	rm -f compiled/dump-ree-unnecessary-node.o
 	rm -f compiled/dump-ree-or-node.o
+	rm -f compiled/dump-ree-byte-node-without-next.o
+	rm -f compiled/dump-ree-bytearray-node-without-next.o
 
-dump.lib: compiled/dump-ree.o compiled/dump-ree-indentation.o compiled/dump-ree-character.o compiled/dump-ree-node.o compiled/dump-ree-beginning-node.o compiled/dump-ree-end-node.o compiled/dump-ree-any-node.o compiled/dump-ree-byte-node.o compiled/dump-ree-bytearray-node.o compiled/dump-ree-repeat-for-node.o compiled/dump-ree-repeat-necessary-node.o compiled/dump-ree-repeat-unnecessary-node.o compiled/dump-ree-range-node.o compiled/dump-ree-inclusive-set-node.o compiled/dump-ree-declusive-set-node.o compiled/dump-ree-group-node.o compiled/dump-ree-unnecessary-node.o compiled/dump-ree-or-node.o
+dump.lib: compiled/dump-ree.o compiled/dump-ree-indentation.o compiled/dump-ree-character.o compiled/dump-ree-node.o compiled/dump-ree-beginning-node.o compiled/dump-ree-end-node.o compiled/dump-ree-any-node.o compiled/dump-ree-byte-node.o compiled/dump-ree-bytearray-node.o compiled/dump-ree-repeat-for-node.o compiled/dump-ree-repeat-necessary-node.o compiled/dump-ree-repeat-unnecessary-node.o compiled/dump-ree-range-node-without-next.o compiled/dump-ree-inclusive-set-node.o compiled/dump-ree-declusive-set-node.o compiled/dump-ree-group-node.o compiled/dump-ree-unnecessary-node.o compiled/dump-ree-or-node.o compiled/dump-ree-byte-node-without-next.o compiled/dump-ree-bytearray-node-without-next.o
 	rm -f dump.lib
-	ar r dump.lib compiled/dump-ree.o compiled/dump-ree-indentation.o compiled/dump-ree-character.o compiled/dump-ree-node.o compiled/dump-ree-beginning-node.o compiled/dump-ree-end-node.o compiled/dump-ree-any-node.o compiled/dump-ree-byte-node.o compiled/dump-ree-bytearray-node.o compiled/dump-ree-repeat-for-node.o compiled/dump-ree-repeat-necessary-node.o compiled/dump-ree-repeat-unnecessary-node.o compiled/dump-ree-range-node.o compiled/dump-ree-inclusive-set-node.o compiled/dump-ree-declusive-set-node.o compiled/dump-ree-group-node.o compiled/dump-ree-unnecessary-node.o compiled/dump-ree-or-node.o
+	ar r dump.lib compiled/dump-ree.o compiled/dump-ree-indentation.o compiled/dump-ree-character.o compiled/dump-ree-node.o compiled/dump-ree-beginning-node.o compiled/dump-ree-end-node.o compiled/dump-ree-any-node.o compiled/dump-ree-byte-node.o compiled/dump-ree-bytearray-node.o compiled/dump-ree-repeat-for-node.o compiled/dump-ree-repeat-necessary-node.o compiled/dump-ree-repeat-unnecessary-node.o compiled/dump-ree-range-node-without-next.o compiled/dump-ree-inclusive-set-node.o compiled/dump-ree-declusive-set-node.o compiled/dump-ree-group-node.o compiled/dump-ree-unnecessary-node.o compiled/dump-ree-or-node.o compiled/dump-ree-byte-node-without-next.o compiled/dump-ree-bytearray-node-without-next.o
 
 compiled/dump-ree.o: src/dump-ree.c 
 	$(CC) $(CFLAGS) -c src/dump-ree.c -o compiled/dump-ree.o
@@ -62,8 +64,8 @@ compiled/dump-ree-repeat-necessary-node.o: src/dump-ree-repeat-necessary-node.c
 compiled/dump-ree-repeat-unnecessary-node.o: src/dump-ree-repeat-unnecessary-node.c 
 	$(CC) $(CFLAGS) -c src/dump-ree-repeat-unnecessary-node.c -o compiled/dump-ree-repeat-unnecessary-node.o
 
-compiled/dump-ree-range-node.o: src/dump-ree-range-node.c 
-	$(CC) $(CFLAGS) -c src/dump-ree-range-node.c -o compiled/dump-ree-range-node.o
+compiled/dump-ree-range-node-without-next.o: src/dump-ree-range-node-without-next.c 
+	$(CC) $(CFLAGS) -c src/dump-ree-range-node-without-next.c -o compiled/dump-ree-range-node-without-next.o
 
 compiled/dump-ree-inclusive-set-node.o: src/dump-ree-inclusive-set-node.c 
 	$(CC) $(CFLAGS) -c src/dump-ree-inclusive-set-node.c -o compiled/dump-ree-inclusive-set-node.o
@@ -79,3 +81,9 @@ compiled/dump-ree-unnecessary-node.o: src/dump-ree-unnecessary-node.c
 
 compiled/dump-ree-or-node.o: src/dump-ree-or-node.c 
 	$(CC) $(CFLAGS) -c src/dump-ree-or-node.c -o compiled/dump-ree-or-node.o
+
+compiled/dump-ree-byte-node-without-next.o: src/dump-ree-byte-node-without-next.c 
+	$(CC) $(CFLAGS) -c src/dump-ree-byte-node-without-next.c -o compiled/dump-ree-byte-node-without-next.o
+
+compiled/dump-ree-bytearray-node-without-next.o: src/dump-ree-bytearray-node-without-next.c 
+	$(CC) $(CFLAGS) -c src/dump-ree-bytearray-node-without-next.c -o compiled/dump-ree-bytearray-node-without-next.o

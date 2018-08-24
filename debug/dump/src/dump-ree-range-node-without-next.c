@@ -1,7 +1,7 @@
 #include <ree.h>
 #include <stdio.h>
 
-int dump_ree_range_node (FILE *stream, ree_node *node, ree *ree, ree_size indentation){
+int dump_ree_range_node_without_next (FILE *stream, ree_node *node, ree *ree, ree_size indentation){
   
   int status1 = dump_ree_indentation(stream, indentation);
   if (status1)
@@ -15,6 +15,6 @@ int dump_ree_range_node (FILE *stream, ree_node *node, ree *ree, ree_size indent
   if (status2)
     return 1;
 
-  return 0;
+	return 0;
   
 }

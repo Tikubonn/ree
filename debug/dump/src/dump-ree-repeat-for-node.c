@@ -18,6 +18,6 @@ int dump_ree_repeat_for_node (FILE *stream, ree_node *node, ree *ree, ree_size i
   if (status2)
     return 1;
 
-  return 0;
+	return dump_ree_node(stream, node->next, ree, indentation);
   
 }
