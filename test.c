@@ -15,7 +15,7 @@ ree_string *source2 = make_ree_string0(text);\
 int status2 = match_ree(source2, ree, &found);\
 if (status2){\
 dump_ree(stderr, ree);\
-fprintf(stderr, "line of %lu: match_ree() caused error! (%d)\n", __LINE__, status1);\
+fprintf(stderr, "line of %lu: match_ree() caused error! (%d)\n", __LINE__, status2);\
 abort();\
 }\
 if (found != fnd){\
@@ -159,7 +159,16 @@ int main (){
 	test1("(moco|chibi|nanashi)!", "chibi!", true);
 	test1("(moco|chibi|nanashi)!", "nanashi!", true);
 	test1("(moco|chibi|nanashi)!", "tikubonn!", false);
-  
+
+	test1("<moco>!", "moco!", true);
+	test1("<moco>!", "tikubonn!", false);
+	
+	test1("[<aaaa>-<zzzz>]", "aaaa", true);
+	test1("[<aaaa>-<zzzz>]", "aazz", true);
+	test1("[<aaaa>-<zzzz>]", "zzzz", true);
+	test1("[<aaaa>-<zzzz>]", "aa00", true);
+	test1("[<aaaa>-<zzzz>]", "00aa", false);
+	
   return 0;
   
 }
