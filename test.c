@@ -146,6 +146,15 @@ int main (){
 	test1("mo[^a-z]!", "moo!", false);
 	test1("mo[^a-z]!", "mo0!", true);
 	
+	test1("moco!|moca!", "moco!", true);
+	test1("moco!|moca!", "moca!", true);
+	test1("moco!|moca!", "mocc!", false);
+	
+	test1("moco!|moca!|moo!", "moco!", true);
+	test1("moco!|moca!|moo!", "moca!", true);
+	test1("moco!|moca!|moo!", "moo!", true);
+	test1("moco!|moca!|moo!", "mono!", false);
+  
 	test1("(moco|chibi|nanashi)!", "moco!", true);
 	test1("(moco|chibi|nanashi)!", "chibi!", true);
 	test1("(moco|chibi|nanashi)!", "nanashi!", true);
