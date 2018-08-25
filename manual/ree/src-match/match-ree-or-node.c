@@ -16,7 +16,7 @@ int match_ree_or_node (ree_stream *stream, ree_node *node, ree *ree, bool *found
   *stream = sm;
   
   bool fnd2;
-  int status2 = match_ree_node(stream, node->or_node.or_node1, ree, &fnd2);
+  int status2 = match_ree_node(stream, node->or_node.or_node2, ree, &fnd2);
   if (status2)
     return 1;
   
