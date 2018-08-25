@@ -20,6 +20,7 @@ int __stdcall search_ree (ree_string *source, ree *ree, bool *found){
 			ree_size end = ree_stream_index(&stream);
 			ree->match_beginning = beginning;
 			ree->match_end = end;
+			confirm_ree_groups1(ree->root); // groups
       return 0;
     }
     

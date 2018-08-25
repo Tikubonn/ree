@@ -17,3 +17,5 @@
 #include "match-ree-or-node.h"
 #include "match-ree-unnecessary-node.h"
 #include "match-ree-group-node.h"
+#include "confirm-ree-groups1.h"
+#include "confirm-ree-groups2.h"

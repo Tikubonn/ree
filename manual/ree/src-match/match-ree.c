@@ -11,6 +11,8 @@ int __stdcall match_ree (ree_string *source, ree *ree, bool *found){
   if (status1)
     return 1;
 	
+	confirm_ree_groups1(ree->root); // groups
+	
 	ree_size end = ree_stream_index(&stream);
 	ree->match_beginning = beginning;
 	ree->match_end = end;
