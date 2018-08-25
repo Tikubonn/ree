@@ -193,71 +193,71 @@ int main (){
   test1("mo[a-z]+!", "moca!", true);
   test1("mo[a-z]+!", "monaca!", true);
 
-	test1("mo[o]!", "moo!", true);
-	test1("mo[o]!", "moa!", false);
-	
-	test1("mo[a-z]!", "moo!", true);
-	test1("mo[a-z]!", "mo0!", false);
-
-	test1("mo[^o]!", "moo!", false);
-	test1("mo[^o]!", "moa!", true);
-	
-	test1("mo[^a-z]!", "moo!", false);
-	test1("mo[^a-z]!", "mo0!", true);
-	
-	test1("moco!|moca!", "moco!", true);
-	test1("moco!|moca!", "moca!", true);
-	test1("moco!|moca!", "mocc!", false);
-	
-	test1("moco!|moca!|moo!", "moco!", true);
-	test1("moco!|moca!|moo!", "moca!", true);
-	test1("moco!|moca!|moo!", "moo!", true);
-	test1("moco!|moca!|moo!", "mono!", false);
+  test1("mo[o]!", "moo!", true);
+  test1("mo[o]!", "moa!", false);
   
-	test1("(moco|chibi|nanashi)!", "moco!", true);
-	test1("(moco|chibi|nanashi)!", "chibi!", true);
-	test1("(moco|chibi|nanashi)!", "nanashi!", true);
-	test1("(moco|chibi|nanashi)!", "tikubonn!", false);
+  test1("mo[a-z]!", "moo!", true);
+  test1("mo[a-z]!", "mo0!", false);
 
-	test1("<moco>!", "moco!", true);
-	test1("<moco>!", "tikubonn!", false);
-	
-	test1("[<aaaa>-<zzzz>]", "aaaa", true);
-	test1("[<aaaa>-<zzzz>]", "aazz", true);
-	test1("[<aaaa>-<zzzz>]", "zzzz", true);
-	test1("[<aaaa>-<zzzz>]", "aa00", true);
-	test1("[<aaaa>-<zzzz>]", "00aa", false);
-	
-	test3("(<mo>*)(<co>*)", "moco", 0, 2, 2, 4);
-	test3("(<mo>*)(<co>*)", "momoco", 0, 4, 4, 6);
-	test3("(<mo>*(<co>*))", "moco", 0, 4, 2, 4);
-	test3("(<mo>*(<co>*))", "momoco", 0, 6, 4, 6);
-	
-	test3("(<mo>+)(<co>+)", "moco", 0, 2, 2, 4);
-	test3("(<mo>+)(<co>+)", "momoco", 0, 4, 4, 6);
-	test3("(<mo>+(<co>+))", "moco", 0, 4, 2, 4);
-	test3("(<mo>+(<co>+))", "momoco", 0, 6, 4, 6);
-	
-	test3("(<mo>{1,3})(<co>{1,3})", "moco", 0, 2, 2, 4);
-	test3("(<mo>{1,3})(<co>{1,3})", "momoco", 0, 4, 4, 6);
-	test3("(<mo>{1,3}(<co>{1,3}))", "moco", 0, 4, 2, 4);
-	test3("(<mo>{1,3}(<co>{1,3}))", "momoco", 0, 6, 4, 6);
-	
-	test3("(<mo>*)(<co>*)", "moco....", 0, 2, 2, 4);
-	test3("(<mo>*)(<co>*)", "momoco......", 0, 4, 4, 6);
-	test3("(<mo>*(<co>*))", "moco....", 0, 4, 2, 4);
-	test3("(<mo>*(<co>*))", "momoco......", 0, 6, 4, 6);
-	
-	test3("(<mo>+)(<co>+)", "moco....", 0, 2, 2, 4);
-	test3("(<mo>+)(<co>+)", "momoco......", 0, 4, 4, 6);
-	test3("(<mo>+(<co>+))", "moco....", 0, 4, 2, 4);
-	test3("(<mo>+(<co>+))", "momoco......", 0, 6, 4, 6);
-	
-	test3("(<mo>{1,3})(<co>{1,3})", "moco....", 0, 2, 2, 4);
-	test3("(<mo>{1,3})(<co>{1,3})", "momoco......", 0, 4, 4, 6);
-	test3("(<mo>{1,3}(<co>{1,3}))", "moco....", 0, 4, 2, 4);
-	test3("(<mo>{1,3}(<co>{1,3}))", "momoco......", 0, 6, 4, 6);
-	
+  test1("mo[^o]!", "moo!", false);
+  test1("mo[^o]!", "moa!", true);
+  
+  test1("mo[^a-z]!", "moo!", false);
+  test1("mo[^a-z]!", "mo0!", true);
+  
+  test1("moco!|moca!", "moco!", true);
+  test1("moco!|moca!", "moca!", true);
+  test1("moco!|moca!", "mocc!", false);
+  
+  test1("moco!|moca!|moo!", "moco!", true);
+  test1("moco!|moca!|moo!", "moca!", true);
+  test1("moco!|moca!|moo!", "moo!", true);
+  test1("moco!|moca!|moo!", "mono!", false);
+  
+  test1("(moco|chibi|nanashi)!", "moco!", true);
+  test1("(moco|chibi|nanashi)!", "chibi!", true);
+  test1("(moco|chibi|nanashi)!", "nanashi!", true);
+  test1("(moco|chibi|nanashi)!", "tikubonn!", false);
+
+  test1("<moco>!", "moco!", true);
+  test1("<moco>!", "tikubonn!", false);
+  
+  test1("[<aaaa>-<zzzz>]", "aaaa", true);
+  test1("[<aaaa>-<zzzz>]", "aazz", true);
+  test1("[<aaaa>-<zzzz>]", "zzzz", true);
+  test1("[<aaaa>-<zzzz>]", "aa00", true);
+  test1("[<aaaa>-<zzzz>]", "00aa", false);
+  
+  test3("(<mo>*)(<co>*)", "moco", 0, 2, 2, 4);
+  test3("(<mo>*)(<co>*)", "momoco", 0, 4, 4, 6);
+  test3("(<mo>*(<co>*))", "moco", 0, 4, 2, 4);
+  test3("(<mo>*(<co>*))", "momoco", 0, 6, 4, 6);
+  
+  test3("(<mo>+)(<co>+)", "moco", 0, 2, 2, 4);
+  test3("(<mo>+)(<co>+)", "momoco", 0, 4, 4, 6);
+  test3("(<mo>+(<co>+))", "moco", 0, 4, 2, 4);
+  test3("(<mo>+(<co>+))", "momoco", 0, 6, 4, 6);
+  
+  test3("(<mo>{1,3})(<co>{1,3})", "moco", 0, 2, 2, 4);
+  test3("(<mo>{1,3})(<co>{1,3})", "momoco", 0, 4, 4, 6);
+  test3("(<mo>{1,3}(<co>{1,3}))", "moco", 0, 4, 2, 4);
+  test3("(<mo>{1,3}(<co>{1,3}))", "momoco", 0, 6, 4, 6);
+  
+  test3("(<mo>*)(<co>*)", "moco....", 0, 2, 2, 4);
+  test3("(<mo>*)(<co>*)", "momoco......", 0, 4, 4, 6);
+  test3("(<mo>*(<co>*))", "moco....", 0, 4, 2, 4);
+  test3("(<mo>*(<co>*))", "momoco......", 0, 6, 4, 6);
+  
+  test3("(<mo>+)(<co>+)", "moco....", 0, 2, 2, 4);
+  test3("(<mo>+)(<co>+)", "momoco......", 0, 4, 4, 6);
+  test3("(<mo>+(<co>+))", "moco....", 0, 4, 2, 4);
+  test3("(<mo>+(<co>+))", "momoco......", 0, 6, 4, 6);
+  
+  test3("(<mo>{1,3})(<co>{1,3})", "moco....", 0, 2, 2, 4);
+  test3("(<mo>{1,3})(<co>{1,3})", "momoco......", 0, 4, 4, 6);
+  test3("(<mo>{1,3}(<co>{1,3}))", "moco....", 0, 4, 2, 4);
+  test3("(<mo>{1,3}(<co>{1,3}))", "momoco......", 0, 6, 4, 6);
+  
   return 0;
   
 }

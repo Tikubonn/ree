@@ -18,6 +18,6 @@ int dump_ree_byte_node_without_next (FILE *stream, ree_node *node, ree *ree, ree
   
   fprintf(stream, "'\n");
 
-	return 0;
+  return 0;
   
 }

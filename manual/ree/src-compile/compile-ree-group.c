@@ -1,7 +1,7 @@
 #include <ree.h>
 
 int compile_ree_group (ree_stream *stream, ree_builder *builder){
-	
+  
   int character = get_ree_stream(stream);
   if (character != '(')
     return REE_SYNTAX_ERROR;

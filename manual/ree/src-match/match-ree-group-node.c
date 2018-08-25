@@ -8,7 +8,7 @@ int match_ree_group_node (ree_stream *stream, ree_node *node, ree *ree, bool *fo
   int status1 = match_ree_node(stream, node->group_node.group_node, ree, &fnd);
   if (status1)
     return 1;
-	
+  
   if (fnd == true){
     
     node->group_node.match_temp_beginning = beginning;

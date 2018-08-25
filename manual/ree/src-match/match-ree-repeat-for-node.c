@@ -30,7 +30,7 @@ int match_ree_repeat_for_node (ree_stream *stream, ree_node *node, ree *ree, boo
   if (fnd == true){
     success = true;
     successsm = *stream;
-		confirm_ree_groups1(node); // groups
+    confirm_ree_groups1(node); // groups
   }
   
   *stream = sm;
@@ -56,7 +56,7 @@ int match_ree_repeat_for_node (ree_stream *stream, ree_node *node, ree *ree, boo
       if (fnd == true){
         success = true;
         successsm = *stream;
-				confirm_ree_groups1(node); // groups
+        confirm_ree_groups1(node); // groups
       }
       
       *stream = sm2;
@@ -67,7 +67,7 @@ int match_ree_repeat_for_node (ree_stream *stream, ree_node *node, ree *ree, boo
       
       if (success == true){
         *stream = successsm;
-				confirm_ree_groups2(node); // groups
+        confirm_ree_groups2(node); // groups
       }
       
       *found = success;
@@ -79,7 +79,7 @@ int match_ree_repeat_for_node (ree_stream *stream, ree_node *node, ree *ree, boo
   
   if (success == true){
     *stream = successsm;
-		confirm_ree_groups2(node); // groups
+    confirm_ree_groups2(node); // groups
   }
 
   *found = success;

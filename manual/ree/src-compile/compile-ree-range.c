@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 int compile_ree_range (ree_stream *stream, ree_builder *builder){
-  	
+    
   int character = get_ree_stream(stream);
   if (character != '-')
     return REE_SYNTAX_ERROR;

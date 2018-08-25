@@ -21,8 +21,8 @@ static int __min (ree_stream *stream, ree_node *node, ree *ree, bool *found){
   
   if (fnd2 == true){
     *found = true;
-		confirm_ree_groups1(node); // groups
-		confirm_ree_groups2(node); // groups
+    confirm_ree_groups1(node); // groups
+    confirm_ree_groups2(node); // groups
     return 0;
   }
   
@@ -48,8 +48,8 @@ static int __min (ree_stream *stream, ree_node *node, ree *ree, bool *found){
       
       if (fnd == true){
         *found = true;
-				confirm_ree_groups1(node); // groups
-				confirm_ree_groups2(node); // groups
+        confirm_ree_groups1(node); // groups
+        confirm_ree_groups2(node); // groups
         return 0;
       }
       
@@ -93,7 +93,7 @@ static int __max (ree_stream *stream, ree_node *node, ree *ree, bool *found){
   if (fnd2 == true){
     success = true;
     successsm = *stream;
-		confirm_ree_groups1(node); // groups
+    confirm_ree_groups1(node); // groups
   }
   
   *stream = sm;
@@ -117,7 +117,7 @@ static int __max (ree_stream *stream, ree_node *node, ree *ree, bool *found){
       if (fnd == true){
         success = true;
         successsm = *stream;
-				confirm_ree_groups1(node); // groups
+        confirm_ree_groups1(node); // groups
       }
       
       *stream = sm2;
@@ -128,7 +128,7 @@ static int __max (ree_stream *stream, ree_node *node, ree *ree, bool *found){
       
       if (success == true){
         *stream = successsm;
-				confirm_ree_groups2(node); // groups
+        confirm_ree_groups2(node); // groups
       }
 
       *found = success;
@@ -140,7 +140,7 @@ static int __max (ree_stream *stream, ree_node *node, ree *ree, bool *found){
   
   if (success == true){
     *stream = successsm;
-		confirm_ree_groups2(node); // groups
+    confirm_ree_groups2(node); // groups
   }
 
   *found = success;

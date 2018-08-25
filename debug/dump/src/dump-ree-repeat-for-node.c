@@ -8,7 +8,7 @@ int dump_ree_repeat_for_node (FILE *stream, ree_node *node, ree *ree, ree_size i
     return 1;
   
   fprintf(
-		stream,
+    stream,
     "repeat %d ~ %d\n",
     node->repeat_for_node.repeat_min,
     node->repeat_for_node.repeat_max
@@ -18,6 +18,6 @@ int dump_ree_repeat_for_node (FILE *stream, ree_node *node, ree *ree, ree_size i
   if (status2)
     return 1;
 
-	return dump_ree_node(stream, node->next, ree, indentation);
+  return dump_ree_node(stream, node->next, ree, indentation);
   
 }

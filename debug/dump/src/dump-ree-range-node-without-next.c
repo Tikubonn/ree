@@ -2,11 +2,11 @@
 #include <stdio.h>
 
 static int __dump (FILE *stream, ree_node *node, ree *ree, ree_size indentation){
-	switch (node->type){
-		case REE_BYTE_NODE: return dump_ree_byte_node_without_next(stream, node, ree, indentation);
-		case REE_BYTEARRAY_NODE: return dump_ree_bytearray_node_without_next(stream, node, ree, indentation);
-		default: return 1;
-	}
+  switch (node->type){
+    case REE_BYTE_NODE: return dump_ree_byte_node_without_next(stream, node, ree, indentation);
+    case REE_BYTEARRAY_NODE: return dump_ree_bytearray_node_without_next(stream, node, ree, indentation);
+    default: return 1;
+  }
 }
 
 int dump_ree_range_node_without_next (FILE *stream, ree_node *node, ree *ree, ree_size indentation){
@@ -23,6 +23,6 @@ int dump_ree_range_node_without_next (FILE *stream, ree_node *node, ree *ree, re
   if (status2)
     return 1;
 
-	return 0;
+  return 0;
   
 }
