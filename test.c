@@ -139,6 +139,17 @@ int main (){
 	
 	test1("mo[a-z]!", "moo!", true);
 	test1("mo[a-z]!", "mo0!", false);
+
+	test1("mo[^o]!", "moo!", false);
+	test1("mo[^o]!", "moa!", true);
+	
+	test1("mo[^a-z]!", "moo!", false);
+	test1("mo[^a-z]!", "mo0!", true);
+	
+	test1("(moco|chibi|nanashi)!", "moco!", true);
+	test1("(moco|chibi|nanashi)!", "chibi!", true);
+	test1("(moco|chibi|nanashi)!", "nanashi!", true);
+	test1("(moco|chibi|nanashi)!", "tikubonn!", false);
   
   return 0;
   
