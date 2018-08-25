@@ -170,10 +170,6 @@ match_ree(text, ree, &found);
 | `make_tmp_ree (var, ree_string*)` | make a `ree` instance from `ree_string` instance. and assign it to `var`. |
 | `copy_tmp_ree (var, ree*)` | make a copied `ree` instance by argument. and assign it to `var`. |
 
-## Where I can get the stable one? 
-
-this library has not reached version of alpha yet. so please wait for developed completely. so you dont have to tell me the found bug :D
-
 ## License
 
 this library released under the MIT Licence.
