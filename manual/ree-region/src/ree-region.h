@@ -3,3 +3,4 @@
 #include "get-ree-region.h"
 #include "ree-region-length.h"
 #include "copy-ree-region-manually.h"
+#include "read-ree-region.h"
