@@ -37,7 +37,7 @@ int compile_ree_bytearray (ree_stream *stream, ree_builder *builder){
   ree_node *node = allocate_node_from_ree_node_pool(builder->ree->pool);
   node->type = REE_BYTEARRAY_NODE;
   node->bytearray_node.index_beginning = beginning;
-  node->bytearray_node.index_end = ree_stream_index(stream);
+  node->bytearray_node.index_end = ree_stream_index(stream) -1; // >
   
   int status10 = connect_to_ree_builder_node(node, builder);
   if (status10)
