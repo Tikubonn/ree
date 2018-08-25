@@ -34,7 +34,7 @@ static int __byte (ree_stream *stream, ree_node *nodea, ree_node *nodeb, ree *re
 static int __bytearray (ree_stream *stream, ree_node *nodea, ree_node *nodeb, ree *ree, bool *found){
   
   if (nodea->bytearray_node.index_end - nodea->bytearray_node.index_beginning != 
-      nodeb->bytearray_node.index_beginning - nodeb->bytearray_node.index_end)
+      nodeb->bytearray_node.index_end - nodeb->bytearray_node.index_beginning)
     return 1;
   
   ree_stream sm = *stream;
