@@ -126,6 +126,45 @@ free_ree(ree);\
 free_ree_string(source2);\
 }
 
+#define test4(regexp, text, beg, ed) {\
+ree_string *source = make_ree_string0(regexp);\
+ree *ree = make_ree(source);\
+int status1 = compile_ree(ree);\
+if (status1){\
+fprintf(stderr, "line of %lu: compile_ree() caused error! (%d)\n", __LINE__, status1);\
+abort();\
+}\
+bool found;\
+ree_string *source2 = make_ree_string0(text);\
+int status2 = search_ree(source2, ree, &found);\
+if (status2){\
+fprintf(stderr, "line of %lu: match_ree() caused error! (%d)\n", __LINE__, status1);\
+abort();\
+}\
+if (found == false){\
+dump_ree(stderr, ree);\
+fprintf(stderr, "failed: \"%s\" <= \"%s\" unmatched.\n", regexp, text);\
+abort();\
+}\
+ree_region region;\
+get_ree_match(ree, &region);\
+if (region.beginning != beg){\
+dump_ree(stderr, ree);\
+fprintf(stderr, "failed: \"%s\" <= \"%s\" (%d != %d) matched beginning position was unequal.", regexp, text, beg);\
+abort();\
+}\
+if (region.end != ed){\
+dump_ree(stderr, ree);\
+fprintf(stderr, "failed: \"%s\" <= \"%s\" (%d != %d) matched end position was unequal.", regexp, text, ed);\
+abort();\
+}\
+fprintf(stdout, "success: \"%s\" <= \"%s\" (%d, %d) = true\n", regexp, text, region.beginning, region.end);\
+free_ree_string(source);\
+free_ree(ree);\
+free_ree_string(source2);\
+}
+
+
 int main (){
   
   test1("mo..!", "moco!", true);
@@ -258,6 +297,9 @@ int main (){
   test3("(<mo>{1,3}(<co>{1,3}))", "moco....", 0, 4, 2, 4);
   test3("(<mo>{1,3}(<co>{1,3}))", "momoco......", 0, 6, 4, 6);
   
+  test4("moca", "moca", 0, 4);
+  test4("moca", "momoca", 2, 6);
+
   return 0;
   
 }
