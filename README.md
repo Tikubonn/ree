@@ -124,14 +124,14 @@ match_ree(text, ree, &found);
 
 | Function | Description | 
 | ---- | ---- | 
-| `ree_string *make_ree_string (char*, ree_size);` | make `ree_string` instance with byte array. if caused error in this function, this return `NULL`. | 
-| `ree_string *make_ree_string0 (char*);` | make `ree_string` instance with byte array. if caused error in this function, this return `NULL`. | 
+| `ree_string *make_ree_string (char*, ree_size);` | make a `ree_string` instance with byte array. if caused error in this function, this return `NULL`. | 
+| `ree_string *make_ree_string0 (char*);` | make a `ree_string` instance with byte array that last element must be `0`. if caused error in this function, this return `NULL`. | 
 | `ree_string *copy_ree_string (ree_string*);` | copy `ree_string` instance by argument. if caused error in this function, this return `NULL`. | 
 | `void free_ree_string (ree_string*);` | free a maken `ree_string` instance. this function will always success. | 
 
 | Function | Description | 
 | ---- | ---- | 
-| `ree_node_pool *allocate_ree_node_pool (ree_size);` | make `ree_node_pool` instance with argument. if caused error in this function, this return `NULL`. | 
+| `ree_node_pool *allocate_ree_node_pool (ree_size);` | make a `ree_node_pool` instance with argument. if caused error in this function, this return `NULL`. | 
 | `ree_node_pool *copy_ree_node_pool (ree_node_pool*);` | copy `ree_node_pool` instance by argument. if caused error in this function, this return `NULL`. | 
 | `void free_ree_node_pool (ree_node_pool*);` | free a maken `ree_node_pool` instance. this function will always success. | 
 
@@ -156,20 +156,25 @@ match_ree(text, ree, &found);
 
 | Macro | Description | 
 | ---- | ---- |
-| `make_tmp_ree_string (var, char*, ree_size)` | |
-| `make_tmp_ree_string0 (var, char*)` | |
-| `copy_tmp_ree_string (var, ree_string*)` | |
+| `make_tmp_ree_string (var, char*, ree_size)` | make a `ree_string` instance with byte array. and assign it to `var`. |
+| `make_tmp_ree_string0 (var, char*)` | make a `ree_string` instance with byte array that last element must be `0`. and assign it to `var`. |
+| `copy_tmp_ree_string (var, ree_string*)` | make a copied `ree_string` instance by argument. and assign it to `var`. |
 
 | Macro | Description | 
 | ---- | ---- |
-| `make_tmp_ree_node_pool (var, ree_size)` | |
-| `copy_tmp_ree_node_pool (var, ree_node_pool*)` | |
+| `make_tmp_ree_node_pool (var, ree_size size)` | make a `ree_node_pool` instance that size is `size`. and assign it to `var`. |
+| `copy_tmp_ree_node_pool (var, ree_node_pool*)` | make a copied `ree_node_pool` instance by argument. and assign it to `var`. |
 
 | Macro | Description | 
 | ---- | ---- |
-| `make_tmp_ree (var, ree_string*)` | |
-| `copy_tmp_ree (var, ree*)` | |
+| `make_tmp_ree (var, ree_string*)` | make a `ree` instance from `ree_string` instance. and assign it to `var`. |
+| `copy_tmp_ree (var, ree*)` | make a copied `ree` instance by argument. and assign it to `var`. |
 
 ## Where I can get the stable one? 
 
 this library has not reached version of alpha yet. so please wait for developed completely. so you dont have to tell me the found bug :D
+
+## License
+
+this library released under the MIT Licence.
+
