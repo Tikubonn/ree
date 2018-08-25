@@ -57,7 +57,7 @@ this library provide some data types.
 
 ### Manual Functions 
 
-you must give those functions some memory for running.
+you must give there functions memory for running .
 for example, there functions are useful if you want run this library on allocated memory that is managed by GC :D
 
 ```c
@@ -82,30 +82,31 @@ match_ree(&text, &ree, &found);
 
 | Function | Description | 
 | ---- | ---- |
-| `void init_ree_string (char*, ree_size, ree_string*);` | | 
-| `int get_ree_string (ree_size, ree_string*, char*);` | | 
-| `ree_size ree_string_length (ree_string*);` | | 
-| `int copy_ree_string_manually (ree_string*, ree_string*);` | | 
+| `void init_ree_string (char*, ree_size, ree_string *string);` | construct `string` with binary array. this function will always success. | 
+| `void init_ree_string0 (char*, ree_string *string);` | construct `string` with binary array that last element must be `0`. this function will always success. | 
+| `int get_ree_string (ree_size index, ree_string *string, char *character);` | write one element to `character`. if `index` was overflowed or caused error, this function return `REE_ERROR`. | 
+| `ree_size ree_string_length (ree_string *string);` | return length of `string`. | 
+| `int copy_ree_string_manually (ree_string *from, ree_string *to);` | copy `from` contents to `to`. if `to` has not enough space, this return `REE_NOT_ENOUGH_MEMORY`. if caused error in this function, this return `REE_ERROR`, otherwise `0`. | 
 
 | Function | Description | 
 | ---- | ---- |
-| `void init_ree_pool (ree_node*, ree_size, ree_node_pool*);` | |
-| `int copy_ree_pool_manually (ree_node_pool*, ree_node_pool*);` | |
+| `void init_ree_pool (ree_node*, ree_size, ree_node_pool*);` | construct `ree_node_pool` with `ree_node` array. this function will always success. |
+| `int copy_ree_pool_manually (ree_node_pool*, ree_node_pool*);` | copy `from` nodes to `to`. if `to` has not enough space, this return `REE_NOT_ENOUGH_MEMORY`. if caused error in this function, this return `REE_ERROR`, otherwise `0`. |
 
 | Function | Description | 
 | ---- | ---- |
-| `void init_ree (ree_string*, ree_node_pool*, ree*);` | |
-| `int match_ree (ree_string *text, ree*, bool *found);` | |
-| `int search_ree (ree_string *text, ree*, bool *found);` | |
-| `ree_size ree_group_count (ree*);` | | 
-| `int get_ree_group (ree_size, ree*, ree_region*);` | |
-| `int get_ree_match (ree*, ree_region*);` | |
+| `void init_ree (ree_string*, ree_node_pool*, ree*);` | construct `ree` with `ree_string` pointer and `ree_node_pool` pointer. this function will always success. |
+| `int match_ree (ree_string *text, ree*, bool *found);` | this function try matching `text` by `ree`. `found` will be `true` if matching was success, otherwise `false`. if caused error in this function, this function will return `REE_ERROR`, otherwise `0`. | 
+| `int search_ree (ree_string *text, ree*, bool *found);` | this function try searching `text` by `ree`. `found` will be `true` if matching was success, otherwise `false`. if caused error in this function, this function will return `REE_ERROR`, otherwise `0`. | 
+| `ree_size ree_group_count (ree *ree);` | return length of groups in `ree`. | 
+| `int get_ree_group (ree_size id, ree *ree, ree_region *region);` | write region information to `region` from matched group. if `id` was overflowed or caused error, this function return `REE_ERROR`. |
+| `int get_ree_match (ree *ree, ree_region *region);` | write region information to `region` from `ree`. if caused error, this function return `REE_ERROR`, otherwise `0`. |
 
 | Function | Description | 
 | ---- | ---- |
-| `ree_size ree_region_length (ree_region*);` | | 
-| `int get_ree_region (ree_size, ree_region*, ree*, char*);` | |
-| `int read_ree_region (void*, ree_size, ree_size, ree_region*, ree*);` | |
+| `ree_size ree_region_length (ree_region *region);` | return length of `region`. | 
+| `int get_ree_region (ree_size index, ree_region *region, ree *ree, char *character);` | write one element to `character` from `region`. if `index` was overflowed or caused error, this function return `REE_ERROR`. |
+| `int read_ree_region (void *sequence, ree_size offset, ree_size size, ree_region*, ree*);` | write binary array to `sequence` from `region`. this function will return wrote size as integer. |
 
 ### Automatic Functions 
 
