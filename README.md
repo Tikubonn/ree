@@ -34,7 +34,7 @@ Ree has supported general basic syntaxes and one extend syntax :D
 | `*` | repeat one of previous expression until it could not match. if you wrote `?` after this expression, this will finish repeating as minimally. | 
 | `+` | repeat one of previous expression until it could not match. if you wrote `?` after this expression, this will finish repeating as minimally. difference of `*` that at minimum this has to match once. | 
 | `?` | if one of previous expression could not match then ignore it. | 
-| `|` | if previous expressions could not match, this will try next expressions. for example, `moco|moca` will be match to `moco` or `moca`. | 
+| `\|` | if previous expressions could not match, this will try next expressions. for example, `moco|moca` will be match to `moco` or `moca`. | 
 | `< ... >` | will be matched to same character array that in angle brackets. | 
 | `[ ... ]` | this expression will be matched to one of character that in the brackets. if you wrote like `a-z`, it will be matched to one of character that in range of `a` to `z`. this library has supported `<...>` and `<...>-<...>` syntax in this expression. | 
 | `[^ ... ]` | this expression will be matched to one of character that not in the brackets. if you wrote like `a-z`, it will be matched to one of character that not in range of `a` to `z`. this library has supported `<...>` and `<...>-<...>` syntax in this expression. | 
