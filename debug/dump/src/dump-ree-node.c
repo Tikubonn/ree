@@ -17,6 +17,7 @@ int dump_ree_node (FILE *stream, ree_node *node, ree *ree, ree_size indentation)
     case REE_REPEAT_UNNECESSARY_NODE: return dump_ree_repeat_unnecessary_node(stream, node, ree, indentation);
     case REE_INCLUSIVE_SET_NODE: return dump_ree_inclusive_set_node(stream, node, ree, indentation);
     case REE_DECLUSIVE_SET_NODE: return dump_ree_declusive_set_node(stream, node, ree, indentation);
+    case REE_GROUP_NODE: return dump_ree_group_node(stream, node, ree, indentation);
     case REE_OR_NODE: return dump_ree_or_node(stream, node, ree, indentation);
     case REE_UNNECESSARY_NODE: return dump_ree_unnecessary_node(stream, node, ree, indentation);
     default: return 1;
